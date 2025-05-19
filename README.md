@@ -1,1 +1,2 @@
 # magneticFieldsSimulation
+Pygame project for OOP II class for the sake of demonstrating how Earth's magnetic field works under the radiation emitted by the sun, still hard-coded, but will receive a lot of updates soon!
