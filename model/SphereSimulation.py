@@ -1,5 +1,5 @@
 from config import *
-from Particle import Particle
+from model.Particle import Particle
 
 #sphere simulation sample
 class SphereSimulation:
