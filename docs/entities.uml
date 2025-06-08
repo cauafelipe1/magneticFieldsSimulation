@@ -1,0 +1,92 @@
+@startuml
+SKIN rose
+title magnecticFieldsSimulation - Class Diagram
+
+class Particle {
+  +theta: float
+  +phi: float
+  +ray: int
+  +particleVector: Vector3
+  +xray: int
+  +yray: int
+  +rotate_y(angle)
+  +project(ratio)
+}
+
+class SunParticle {
+  +dtheta: float
+  +dphi: float
+  +updatePosition()
+  +wiggle()
+}
+class RadiationParticle {
+   +x: int
+   +y: int
+   +z: int
+   +vx: int
+   +vy: int
+   +vz: int
+   +color: Tuple
+   +age: float
+   +update()
+   +project(cameraDistance)
+}
+
+class SphereSimulation {
+  +particles: list[Particle]
+  +angle: float
+  +speed: float 
+  +visionRatio: int
+  +baseColor: Tuple
+  +ray: int
+  +update()
+  +draw(screen)
+}
+
+class SunSimulation{
+  +particles: list[SunParticle]
+  +radiationEmission: list[RadiationParticle]
+  +emissionCounter: int
+  +emissionInterval: int
+  +update()
+  +draw(screen)
+  
+}
+
+class Star{
+  +depth: int
+  +screenWidth: int
+  +screenHeight: int 
+  +reset()
+  +update(angle)
+  +draw(surface, time)
+}
+
+class Starfield{
+  +stars: list[Star]
+  +draw(surface, time)
+  +update()
+}
+
+class PlanetSimulation{
+  +magneticField: list[MagneticFieldParticles]
+} 
+
+class MagneticFieldParticles{
+  + startPos: Vector3
+}
+note right
+  not fully implemented yet
+  as well as PlanetSimulation class
+end note
+
+PlanetSimulation *-down- MagneticFieldParticles: Composition
+SphereSimulation <|-down- PlanetSimulation: Inheritance
+Starfield *-down- Star: Composition
+SphereSimulation *-down- Particle: Composition
+Particle <|-down- SunParticle: Inheritance
+SphereSimulation <|-down- SunSimulation: Inheritance
+SunSimulation *- SunParticle: Composition
+SunSimulation *-down- RadiationParticle: Composition
+
+@enduml
