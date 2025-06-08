@@ -11,9 +11,9 @@ class Particle:
         self.xray = xray
         self.yray = yray
         
-    def rotate_y(self, angulo):
+    def rotate_y(self, angle):
         #y-axis rotation
-        self.particleVector.rotate_y_rad_ip((-1) * angulo)
+        self.particleVector.rotate_y_rad_ip((-1) * angle)
 
     def project(self, ratio):
         #3d -> 2d projection

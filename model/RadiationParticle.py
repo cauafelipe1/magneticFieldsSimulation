@@ -15,8 +15,8 @@ class RadiationParticle:
         self.z += self.vz
         self.y += math.sin(self.age * 0.1) *  0.5
 
-    def project(self, distancia_camera):
-        scale = 400 / (self.z + distancia_camera)
+    def project(self, cameraDistance):
+        scale = 400 / (self.z + cameraDistance)
         x2d =  sunCenter[0] + self.x * scale 
         y2d = sunCenter[1] + self.y * scale
         return int(x2d), int(y2d), scale
