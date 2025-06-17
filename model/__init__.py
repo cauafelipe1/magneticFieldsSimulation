@@ -1,1 +1,1 @@
-__all__=['Particle', 'RadiationParticle', 'SphereSimulation', 'Star', 'Starfield', 'SunSimulation', 'SunParticle', 'MagneticFieldParticles', 'PlanetSimulation']
+__all__=['Particle', 'RadiationParticle', 'SphereSimulation', 'Star', 'Starfield', 'SunSimulation', 'SunParticle', 'MagneticParticle', 'PlanetSimulation', 'MagneticField']
