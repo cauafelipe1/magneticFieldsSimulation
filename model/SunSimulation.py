@@ -2,14 +2,14 @@ from model.SphereSimulation import *
 from model.RadiationParticle import RadiationParticle
 from model.SunParticle import SunParticle
 
-# NOT FULLY IMPLEMENTED YET
+# almost fully implemented, need to be polished a bit
 class SunSimulation(SphereSimulation):
     def __init__(self, particle_num=2000, ray=300, xray=sunCenter[0], yray=sunCenter[1], baseColor=sunColor):
         super().__init__(particle_num=2000, ray=300, xray=sunCenter[0], yray=sunCenter[1], baseColor=sunColor)
         self.particles = [SunParticle(ray, xray, yray) for _ in range(particle_num)]
         self.radiationEmission = []
         self.emissionCounter = 0
-        self.emissionInterval = 10
+        self.emissionInterval = 2
     
 
     def update(self):
