@@ -20,14 +20,12 @@ class SunParticle {
   +wiggle()
 }
 class RadiationParticle {
-   +x: int
-   +y: int
-   +z: int
+   +pos: Vector3
    +vx: int
    +vy: int
    +vz: int
    +color: Tuple
-   +age: float
+   +age: int
    +update()
    +project(cameraDistance)
 }
@@ -69,18 +67,34 @@ class Starfield{
 }
 
 class PlanetSimulation{
-  +magneticField: list[MagneticFieldParticles]
+  +magneticField: MegneticField
+  
 } 
 
-class MagneticFieldParticles{
-  + startPos: Vector3
+class MagneticField {
+  +leftParticles: list[MagneticParticle]
+  +rightParticles: list[MagneticParticle]
+  +angle: float
+  +speed: float
+  +visionRatio: int
+  +baseColor: Tuple
+  +ray
+  +update()
+  +draw(screen)
 }
-note right
-  not fully implemented yet
-  as well as PlanetSimulation class
-end note
 
-PlanetSimulation *-down- MagneticFieldParticles: Composition
+class MagneticParticle{
+  +theta: float
+  +xray: int
+  +yray: int
+  +right: bool
+  +updatePos(increment)
+  +project()
+}
+
+Particle <-down- MagneticParticle: Inheritance
+MagneticField *-down- MagneticParticle
+PlanetSimulation o-down- MagneticField: Aggregation
 SphereSimulation <|-down- PlanetSimulation: Inheritance
 Starfield *-down- Star: Composition
 SphereSimulation *-down- Particle: Composition

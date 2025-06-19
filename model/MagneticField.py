@@ -2,9 +2,9 @@ from model.MagneticParticle import *
 
 # magnetic field compound of magnetic particles
 class MagneticField:
-    def __init__(self, particle_num, ray, xray, yray, baseColor= (255, 255, 255)):
-        self.leftParticles = [MagneticParticle(ray+30, xray-50, yray) for _ in range(particle_num)]
-        self.rightParticles = [MagneticParticle(ray+30, xray+50, yray, right=True) for _ in range(particle_num)]
+    def __init__(self, particleNum, ray, xray, yray, baseColor= (255, 255, 255)):
+        self.leftParticles = [MagneticParticle(ray+30, xray-50, yray) for _ in range(particleNum)]
+        self.rightParticles = [MagneticParticle(ray+30, xray+50, yray, right=True) for _ in range(particleNum)]
 
         self.angle = 0
         self.speed = 0.01
