@@ -4,12 +4,12 @@ from model.PlanetSimulation import PlanetSimulation
 #pygame initialization
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Earth's Magnetic Field simulation (magnetic field still in process of build)")
+pygame.display.set_caption("Earth's Magnetic Field simulation")
 clock = pygame.time.Clock()
 
 #objects instantiation
 earth = PlanetSimulation(particle_num=500, ray=100, xray=earthCenter[0], yray=earthCenter[1], baseColor=earthColor)
-sun = SunSimulation(particle_num=10000, ray=300, xray=sunCenter[0], yray=sunCenter[1], baseColor=sunColor)
+sun = SunSimulation(particle_num=6000, ray=300, xray=sunCenter[0], yray=sunCenter[1], baseColor=sunColor)
 stars = Starfield(200)
 
 

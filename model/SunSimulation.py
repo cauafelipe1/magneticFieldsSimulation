@@ -9,7 +9,7 @@ class SunSimulation(SphereSimulation):
         self.particles = [SunParticle(ray, xray, yray) for _ in range(particle_num)]
         self.radiationEmission = []
         self.emissionCounter = 0
-        self.emissionInterval = 2
+        self.emissionInterval = 3
     
 
     def update(self):
@@ -21,9 +21,9 @@ class SunSimulation(SphereSimulation):
 
         self.emissionCounter += 1
         if self.emissionCounter >= self.emissionInterval:
-            y = random.uniform(-self.ray, self.ray)
+            y = random.uniform(-(self.ray+30), (self.ray+30))
             z = random.uniform(-self.ray / 2, self.ray / 2)
-            origin = (self.ray, y, z)
+            origin = (self.ray-100, y, z)
             direction = (2, 0, 0)
             new = RadiationParticle(origin, direction, color=sunColor)
             self.radiationEmission.append(new)
