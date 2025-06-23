@@ -27,7 +27,7 @@ def main():
         #main simulation objects
         earth.update()
         earth.draw(screen)
-        sun.update()
+        sun.update(WIDTH, HEIGHT)
         sun.draw(screen)
 
         #starry background addition
