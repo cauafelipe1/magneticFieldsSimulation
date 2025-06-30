@@ -1,6 +1,5 @@
 from model.Starfield import *
-from model.SunSimulation import *
-from model.PlanetSimulation import PlanetSimulation
+from model.Simulation import *
 #pygame initialization
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -8,8 +7,7 @@ pygame.display.set_caption("Earth's Magnetic Field simulation")
 clock = pygame.time.Clock()
 
 #objects instantiation
-earth = PlanetSimulation(particle_num=500, ray=100, xray=earthCenter[0], yray=earthCenter[1], baseColor=earthColor)
-sun = SunSimulation(particle_num=6000, ray=300, xray=sunCenter[0], yray=sunCenter[1], baseColor=sunColor)
+simulation = Simulation(screen, "setup.txt")
 stars = Starfield(200)
 
 
@@ -17,18 +15,16 @@ stars = Starfield(200)
 def main():
     on = True
     while on:
-        screen.fill((0, 0, 0))
 
         #quit controll
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 on = False
 
+        screen.fill((0, 0, 0))
         #main simulation objects
-        earth.update()
-        earth.draw(screen)
-        sun.update()
-        sun.draw(screen)
+        simulation.update()
+        simulation.draw(screen)
 
         #starry background addition
         fade = pygame.Surface((WIDTH, HEIGHT))

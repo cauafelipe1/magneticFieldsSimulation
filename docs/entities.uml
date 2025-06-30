@@ -67,6 +67,7 @@ class Starfield{
 }
 
 class PlanetSimulation{
+  +hasMagneticField: bool
   +magneticField: MegneticField
   
 } 
@@ -92,8 +93,33 @@ class MagneticParticle{
   +project()
 }
 
+class Simulation {
+  +scenes: Scene
+  +currentSceneIndex: int
+  +sceneTimer: time.time()
+  +loadScenes(fileName)
+  +screen: pygame.display.set_mode()
+  +update()
+  +draw(screen)
+}
+
+class Scene {
+  +suns: list[SunSimulation]
+  +planets: list[PlanetSimulation]
+  +sunX: list[int]
+  +planetX: list[int]
+  +getSun(numberOfSuns)
+  +getPlanets(numberOfPlanets)
+  +update(screenWidth, screenHeight)
+  +draw(screen)
+}
+
+
+Scene *-down- SunSimulation: Composition
+Scene *-down- PlanetSimulation: Composition
+Simulation *-down- Scene: Composition
 Particle <-down- MagneticParticle: Inheritance
-MagneticField *-down- MagneticParticle
+MagneticField *-down- MagneticParticle: Composition
 PlanetSimulation o-down- MagneticField: Aggregation
 SphereSimulation <|-down- PlanetSimulation: Inheritance
 Starfield *-down- Star: Composition

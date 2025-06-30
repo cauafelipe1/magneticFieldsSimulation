@@ -10,24 +10,30 @@ class SunSimulation(SphereSimulation):
         self.radiationEmission = []
         self.emissionCounter = 0
         self.emissionInterval = 3
-    
 
-    def update(self):
-        for s in self.particles:
-            s.wiggle()
+    def update(self, screen_width, screen_height):
+      for s in self.particles:
+          s.wiggle()
+      
+      # updates and filters the visible particles
+      visible_radiation = []
 
-        for p in self.radiationEmission:
-            p.update()
+      for p in self.radiationEmission:
+          p.update()
+          x2d, y2d, _ = p.project(self.visionRatio)
+          if 0 <= x2d < screen_width and 0 <= y2d < screen_height:
+              visible_radiation.append(p)
+      self.radiationEmission = visible_radiation
 
-        self.emissionCounter += 1
-        if self.emissionCounter >= self.emissionInterval:
-            y = random.uniform(-(self.ray+30), (self.ray+30))
-            z = random.uniform(-self.ray / 2, self.ray / 2)
-            origin = (self.ray-100, y, z)
-            direction = (2, 0, 0)
-            new = RadiationParticle(origin, direction, color=sunColor)
-            self.radiationEmission.append(new)
-            self.emissionCounter = 0
+      self.emissionCounter += 1
+      if self.emissionCounter >= self.emissionInterval:
+          y = random.uniform(-(self.ray + 30), (self.ray + 30))
+          z = random.uniform(-self.ray / 2, self.ray / 2)
+          origin = (self.ray - 100, y, z)
+          direction = (2, 0, 0)
+          new = RadiationParticle(origin, direction, color=sunColor)
+          self.radiationEmission.append(new)
+          self.emissionCounter = 0
 
 
     #draw sun particles and also its radiation

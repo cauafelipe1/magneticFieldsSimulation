@@ -1,0 +1,19 @@
+scene 1
+sun -> 1
+sunX -> [1, 5]
+planet -> 1
+planetX -> [5, 6]
+---
+scene 2
+sun -> 1
+sunX -> [1, 5]
+planet -> 2
+planetX -> [5, 6], [3, 6]
+
+---
+scene 3
+sun -> 1
+sunX -> [1, 5]
+planet -> 4
+planetX -> [5, 6], [3, 7], [4, 7], [6, 6]
+---
